@@ -1,6 +1,6 @@
 import { IsString } from "class-validator";
 
-export class ProConsDiscusserDto {
+export class ProsConsDiscusserDto {
 
     @IsString()
     readonly prompt: string;

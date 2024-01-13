@@ -1,2 +1,2 @@
 export * from './orthography.dto';
-export * from './proConsDiscusser.dto';
+export * from './prosConsDiscusser.dto';

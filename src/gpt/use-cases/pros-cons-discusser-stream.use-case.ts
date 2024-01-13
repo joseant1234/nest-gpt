@@ -4,9 +4,9 @@ interface Options {
     prompt: string;
 }
 
-export const proConsDiscusserUseCase = async(openai: OpenAI, { prompt }: Options) => {
-    // temperature: 0.8 para que se bastante aleatoria las respuestas
-    const response = await openai.chat.completions.create({
+export const prosConsDiscusserStreamUseCase = async(openai: OpenAI, { prompt }: Options) => {
+    return await openai.chat.completions.create({
+        stream: true,
         model: 'gpt-4',
         messages: [
             {
@@ -25,7 +25,4 @@ export const proConsDiscusserUseCase = async(openai: OpenAI, { prompt }: Options
         temperature: 0.8,
         max_tokens: 500,
     })
-
-
-    return response.choices[0].message;
 }

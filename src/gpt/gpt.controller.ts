@@ -1,6 +1,6 @@
 import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
 import { GptService } from './gpt.service';
-import { OrthographyDto, ProConsDiscusserDto } from './dtos';
+import { OrthographyDto, ProsConsDiscusserDto } from './dtos';
 import { Response } from 'express';
 
 @Controller('gpt')
@@ -17,17 +17,17 @@ export class GptController {
 
   @Post('pro-cons-discusser')
   proConsDiscusser(
-    @Body() proConsDiscusserDto: ProConsDiscusserDto,
+    @Body() prosConsDiscusserDto: ProsConsDiscusserDto,
   ) {
-    return this.gptService.proConsDiscusser(proConsDiscusserDto);
+    return this.gptService.prosConsDiscusser(prosConsDiscusserDto);
   }
 
-  @Post('pro-cons-discusser-stream')
-  async proConsDiscusserStream(
-    @Body() proConsDiscusserDto: ProConsDiscusserDto,
+  @Post('pros-cons-discusser-stream')
+  async prosConsDiscusserStream(
+    @Body() prosConsDiscusserDto: ProsConsDiscusserDto,
     @Res() res: Response,
   ) {
-    const stream = await this.gptService.proConsDiscusserStream(proConsDiscusserDto);
+    const stream = await this.gptService.prosConsDiscusserStream(prosConsDiscusserDto);
     res.setHeader('Content-Type', 'application/json');
     res.status(HttpStatus.OK);
     // como es un stream por eso usa for await, dado que son varias emisiones del stream
